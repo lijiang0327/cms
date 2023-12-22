@@ -11,12 +11,12 @@
     "db:start": "docker-compose up -d",
     "db:stop": "docker-compose down"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.16.0",
-    "@strapi/plugin-users-permissions": "4.16.0",
-    "@strapi/plugin-i18n": "4.16.0",
     "@strapi/plugin-cloud": "4.16.0",
+    "@strapi/plugin-i18n": "4.16.0",
+    "@strapi/plugin-users-permissions": "4.16.0",
+    "@strapi/strapi": "4.16.0",
+    "@strapi/typescript-utils": "^4.16.2",
     "mysql": "2.18.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
