@@ -19,7 +19,12 @@ export const setItem = (key: string, value: unknown) => {
     }
 }
 
+export const removeItem = (key: string) => {
+    localStorage.removeItem(`${Prefix}${key}`);
+}
+
 export default {
     getItem,
     setItem,
+    removeItem,
 }

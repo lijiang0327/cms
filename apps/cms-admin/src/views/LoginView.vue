@@ -3,7 +3,9 @@
     import {useRouter} from 'vue-router';
 
     import login from '@/api/login';
-    import storage from '@/utils/localStorage';
+    import {useUserStore} from '@/stores/user';
+
+    const userStore = useUserStore();
 
     const state = reactive({
         email: '',
@@ -30,15 +32,9 @@
         const result = await login(state.email, state.password);
         
         if (result) {
-            if (result.jwt) {
-                storage.setItem('jwt', result.jwt);
-            }
+            userStore.setUserStatus(result.jwt, result.user);
 
-            if (result.user) {
-                storage.setItem('user', result.user);
-            }
-
-            location.href = '/';
+            router.replace('/');
         }
     }
 </script>
@@ -49,7 +45,7 @@
             <h3>登录</h3>
             <v-form ref="formRef">
                 <v-text-field
-                   label="邮箱"
+                   label="邮箱或用户名"
                    type="text"
                    :rules="state.emailRules"
                    v-model="state.email"

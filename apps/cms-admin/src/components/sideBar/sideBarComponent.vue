@@ -4,7 +4,6 @@
         height="100%"
     >
         <v-list class="list-container">
-
             <Fragment v-for="menu in state.menus" :key="menu.id">
                 <v-list-item 
                     :prepend-icon="menu.icon" 

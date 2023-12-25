@@ -11,7 +11,7 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
     const jwt = getItem('jwt');
 
-    config.headers.jwt = jwt || undefined;
+    config.headers.Authorization = jwt ? `Bearer ${jwt}` : undefined;
 
     return config;
 })
