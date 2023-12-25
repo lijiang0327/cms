@@ -1,0 +1,3 @@
+<template>
+    type manage
+</template>

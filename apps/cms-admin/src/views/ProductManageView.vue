@@ -1,0 +1,3 @@
+<template>
+    product manage
+</template>

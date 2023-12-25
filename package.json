@@ -8,6 +8,7 @@
     "dev:server": "pnpm -F cms-server develop",
     "db:start": "pnpm -F cms-server db:start",
     "db:stop": "pnpm -F cms-server db:stop",
-    "dev:client": "pnpm -F cms-client dev"
+    "dev:client": "pnpm -F cms-client dev",
+    "dev:admin": "pnpm -F cms-admin dev"
   }
 }
