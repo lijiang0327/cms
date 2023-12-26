@@ -5,19 +5,17 @@
   import LayoutComponent from '@/components/layout/LayoutComponent.vue';
   import SideBarComponent from '@/components/sideBar/sideBarComponent.vue';
   import HeaderComponent from '@/components/header/headerComponent.vue';
-  import isLogin from '@/utils/isLogin';
   import {useUserStore} from '@/stores/user';
+  import {useGlobalStore} from '@/stores/global';
 
   const state = useUserStore();
+  const globalStore = useGlobalStore();
 
   const router = useRouter();
 
   onBeforeMount(async () => {
-    const loggedIn = await isLogin();
-
-    state.loggedIn = loggedIn;
     router.beforeEach((to, _, next) => {
-      if (!loggedIn && to.name !== 'login') {
+      if (!state.loggedIn && to.name !== 'login') {
         next('/login')
       } else {
         next()
@@ -40,6 +38,12 @@
       <RouterView />
     </div>
   </LayoutComponent>
+  <v-snackbar
+    color="warning"
+    v-model="globalStore.errorMessageVisible"
+    location="top"
+  >
+  {{ globalStore.errorMessage }}</v-snackbar>
 </template>
 
 <style scoped>

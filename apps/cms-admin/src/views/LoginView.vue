@@ -30,12 +30,8 @@
         }
 
         const result = await login(state.email, state.password);
-        
-        if (result) {
-            userStore.setUserStatus(result.jwt, result.user);
-
-            router.replace('/');
-        }
+        userStore.setUserStatus(result.jwt, result.user);
+        await router.replace('/');
     }
 </script>
 

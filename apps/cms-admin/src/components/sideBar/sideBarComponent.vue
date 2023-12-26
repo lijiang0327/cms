@@ -4,16 +4,18 @@
         height="100%"
     >
         <v-list class="list-container">
-            <Fragment v-for="menu in state.menus" :key="menu.id">
+            <template v-for="menu in state.menus">
                 <v-list-item 
                     :prepend-icon="menu.icon" 
                     :title="menu.title"
                     :link="true"
                     :to="menu.path"
                     v-if="!menu.children"
+                    :key="menu.id"
                 ></v-list-item>
                 <v-list-group
                     v-if="menu.children"
+                    :key="menu.id"
                 >
                     <template v-slot:activator="{props}">
                         <v-list-item
@@ -33,7 +35,7 @@
                         :to="child.path"
                     ></v-list-item>
                 </v-list-group>
-            </Fragment>
+            </template>
         </v-list>
     </v-card>
 </template>

@@ -4,7 +4,7 @@ import {ref} from 'vue';
 
 import {getItem, removeItem, setItem} from '@/utils/localStorage';
 
-export const useUserStore = defineStore('counter', () => {
+export const useUserStore = defineStore('user', () => {
   const jwt = ref(getItem('jwt'));
   const user = ref(getItem('user'));
   const loggedIn = ref(!!jwt.value);

@@ -3,6 +3,9 @@ const Prefix = 'cms-server-'
 export const getItem = (key: string) => {
     try {
         const itemStr = localStorage.getItem(`${Prefix}${key}`) ?? '';
+
+        if (!itemStr) return null;
+
         return JSON.parse(itemStr);
     } catch (error) {
         console.error(error);
