@@ -49,7 +49,7 @@
                 id: uuidv4(),
                 title: '首页',
                 icon: 'mdi-home',
-                path: '/'
+                path: '/home/dashboard'
             },
             {
                 id: uuidv4(),
@@ -60,19 +60,19 @@
                         id: uuidv4(),
                         title: '品牌管理',
                         icon: 'mdi-google-ads',
-                        path: '/brand'
+                        path: '/home/brand'
                     },
                     {
                         id: uuidv4(),
                         title: '类型管理',
                         icon: 'mdi-ev-plug-type1',
-                        path: '/type'
+                        path: '/home/type'
                     },
                     {
                         id: uuidv4(),
                         title: '商品管理',
                         icon: 'mdi-ev-plug-type1',
-                        path: '/product'
+                        path: '/home/product'
                     },
                 ]
             },
@@ -80,7 +80,7 @@
                 id: uuidv4(),
                 title: '关于',
                 icon: 'mdi-information-outline',
-                path: 'about',
+                path: '/home/about',
             }
         ]
     })

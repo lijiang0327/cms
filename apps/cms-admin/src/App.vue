@@ -2,9 +2,6 @@
   import {onBeforeMount} from 'vue';
   import {useRouter} from 'vue-router';
 
-  import LayoutComponent from '@/components/layout/LayoutComponent.vue';
-  import SideBarComponent from '@/components/sideBar/sideBarComponent.vue';
-  import HeaderComponent from '@/components/header/headerComponent.vue';
   import {useUserStore} from '@/stores/user';
   import {useGlobalStore} from '@/stores/global';
 
@@ -25,19 +22,7 @@
 </script>
 
 <template>
-  <RouterView v-if="!state.loggedIn" />
-  <LayoutComponent v-else>
-    <template #header>
-      <HeaderComponent />
-    </template>
-    <template #sideBar>
-      <SideBarComponent />
-    </template>
-
-    <div>
-      <RouterView />
-    </div>
-  </LayoutComponent>
+  <RouterView />
   <v-snackbar
     color="warning"
     v-model="globalStore.errorMessageVisible"

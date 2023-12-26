@@ -4,7 +4,7 @@
         <v-menu>
             <template v-slot:activator="{ props }">
                 <v-avatar class="avatar" color="info" v-bind="props">
-                    <span>{{state.user?.username.slice(0, 2) ?? ''}}</span>
+                    <span>{{state.user?.username?.slice(0, 2) ?? ''}}</span>
                 </v-avatar>
             </template>
 
@@ -29,8 +29,8 @@
 
     const onLogoutClickHandler = () => {
 
+        router.push('/login');
         state.clearUserStatus();
-        router.push('/login')
     }
 
 </script>

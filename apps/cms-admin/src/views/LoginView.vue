@@ -16,7 +16,8 @@
         passwordRules: [
             (v: string) => !!v || 'Password is required',
             (v: string) => v?.length >= 6 || 'Password must more than 6 characters'
-        ]
+        ],
+        loading: false,
     })
     const formRef = ref<null | HTMLFormElement>(null);
 
@@ -29,9 +30,15 @@
             return;
         }
 
-        const result = await login(state.email, state.password);
-        userStore.setUserStatus(result.jwt, result.user);
-        await router.replace('/');
+        state.loading = true;
+
+        try {
+            const result = await login(state.email, state.password);
+            userStore.setUserStatus(result.jwt, result.user);
+            await router.replace('/home');
+        } catch (error) {
+            state.loading = false;
+        }
     }
 </script>
 
@@ -57,7 +64,12 @@
                     v-model="state.password"
                 ></v-text-field>
 
-                <v-btn color="primary" @click="onSubmitClickHandler" block>登录</v-btn>
+                <v-btn 
+                    color="primary" 
+                    @click="onSubmitClickHandler" 
+                    block
+                    :loading="state.loading"
+                >登录</v-btn>
             </v-form>
         </div>
     </div>
