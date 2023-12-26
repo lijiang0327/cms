@@ -40,31 +40,35 @@
 </script>
 
 <template>
-    <div class="loginView">
-        <div class="loginForm">
+    <div class="login-view">
+        <div class="login-form-container">
             <h3>登录</h3>
-            <v-form ref="formRef">
+            <v-form ref="formRef" class="login-form">
                 <v-text-field
-                   label="邮箱或用户名"
-                   type="text"
-                   :rules="state.emailRules"
-                   v-model="state.email"
+                    label="邮箱或用户名"
+                    type="text"
+                    variant="outlined"
+                    density="compact"
+                    :rules="state.emailRules"
+                    v-model="state.email"
                 ></v-text-field>
                 <v-text-field
                     label="密码"
                     type="password"
+                    variant="outlined"
+                    density="compact"
                     :rules="state.passwordRules"
                     v-model="state.password"
                 ></v-text-field>
 
-                <v-btn @click="onSubmitClickHandler" block>登录</v-btn>
+                <v-btn color="primary" @click="onSubmitClickHandler" block>登录</v-btn>
             </v-form>
         </div>
     </div>
 </template>
 
 <style>
-    .loginView {
+    .login-view {
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -72,13 +76,21 @@
         justify-content: center;
     }
 
-    .loginForm {
+    .login-form-container {
         width: 50vw;
         height: 50vh;
         padding: 40px 80px;
+        max-width: 600px;
+        min-width: 400px;
 
         h3 {
             margin-bottom: 32px;
         }
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
     }
 </style>

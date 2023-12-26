@@ -1,21 +1,56 @@
 import http from '@/utils/http';
 
-export const getBrandList = async () => {
-    const url = '/api/brands'
+type GetBrandListParams = {
+    brandName?: string
+    page?: number
+}
 
-    const result = await http.get(url);
+export const getBrandList = async (params?: GetBrandListParams) => {
+    const url = '/api/brands';
+
+    const result = await http.get(url, {
+        params: {
+            'filters[name][$contains]': params?.brandName || undefined,
+            'pagination[page]': params?.page || undefined,
+            'pagination[pageSize]': 10,
+        }
+    });
 
     return result.data;
 }
 
-export const addBrand = async () => {
-
+type AddBrandParams = {
+    name: string
 }
 
-export const deleteBrand = async () => {
+export const addBrand = async (params: AddBrandParams) => {
+    const url = '/api/brands';
 
+    const result = await http.post(url, {data: {...params}});
+
+    return result.data;
 }
 
-export const updateBrand = async () => {
+export const deleteBrand = async (id: number) => {
+    const url = `/api/brands/${id}`;
 
+    const result = await http.delete(url);
+
+    return result.data;
+}
+
+type UpdateBrandParams = AddBrandParams & {
+    id: number
+}
+
+export const updateBrand = async (params: UpdateBrandParams) => {
+    const url = `/api/brands/${params.id}`;
+
+    const result = await http.put(url, {
+        data: {
+            name: params.name
+        }
+    });
+
+    return result.data;
 }
